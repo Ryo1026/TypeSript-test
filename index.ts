@@ -32,3 +32,45 @@ II.常見會被 TS 警告的情形有以下：
   2.覆寫整個物件時的格式錯誤（少一鍵 / 多一鍵 / 沒多沒少鍵，但至少其中一鍵對應值之型別錯誤）
   3.隨意新增原先不存在該物件的屬性 
 */
+
+// 函式的型別註記寫法
+let addition = function(para1: number, para2: number): number{
+   return para1 + para2
+}
+
+let arraysArray = [
+  [3, 2, 1],
+  ['Hello', 'World', 'C8'],
+  [true, false, false],
+]
+
+let trapArray = [
+  [1, 2],
+  ['Hello', 'World'],
+  [true, false, 123, null],
+  ['Srting', undefined]
+]
+
+// 型別化名 (Type Alias)
+type Animal = [string, Date, boolean]
+
+let dog: Animal = ['Lulu', new Date(2019, 2, 12), true]
+let pig: Animal = ['PuPu', new Date(2020, 10, 26), true]
+let fish: Animal = ['KoreaFish', new Date(1989, 5, 5), false]
+
+// Tuple ex:經緯度 [180, 23.5]
+
+// Enum 列舉
+enum WeekDay{
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+let weekend = WeekDay.Friday
+
+let birthday: WeekDay = WeekDay.Monday
