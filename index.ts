@@ -53,10 +53,14 @@ let trapArray = [
 
 // 型別化名 (Type Alias)
 type Animal = [string, Date, boolean]
-
 let dog: Animal = ['Lulu', new Date(2019, 2, 12), true]
 let pig: Animal = ['PuPu', new Date(2020, 10, 26), true]
 let fish: Animal = ['KoreaFish', new Date(1989, 5, 5), false]
+
+type MathOperator = (n1: number, n2: number) => number
+let powerOpWithNoParamsAnnotation: MathOperator = function (na, nb) {
+  return na ** nb
+}
 
 // Tuple ex:經緯度 [180, 23.5]
 
@@ -74,3 +78,28 @@ enum WeekDay{
 let weekend = WeekDay.Friday
 
 let birthday: WeekDay = WeekDay.Monday
+
+// 型別擴展：選填型別(?:)的使用
+enum Gender { male, female, other }
+
+type AccountInfo = {
+  account: string,
+  password: string,
+  nickname?: string | undefined,
+  birth?: Date | undefined,
+  gender?: Gender | undefined,
+  subscribed: boolean
+}
+
+/* 
+若將 undefined 作為物件某些屬性的型別，儘管 undefined 在原生 JS 的意味就是可以放置該屬性為空值，
+甚至是不去定義的狀態。
+但在 TypeScript 的世界裡：undefined 這種原始型別代表必須存取名為 undefined 這種值，
+並不是完全省略定義它！ 
+*/
+
+let accountMaxwell: AccountInfo = {
+  account: 'maxwell.com',
+  password: '<hash-password>',
+  subscribed: false
+}
